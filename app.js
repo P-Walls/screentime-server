@@ -13,8 +13,12 @@ let user = require("./controllers/usercontroller");
 app.use("/user", user);
 
 //import in movies and tv
-// let movie = require("./controllers/moviecontroller");
-// app.use("/movie", movie);
+let movie = require("./controllers/moviecontroller");
+app.use("/movie", movie);
+
+
+let tvshow = require("./controllers/tvcontroller");
+app.use("/tv", tvshow);
 
 app.listen(process.env.PORT, () => {
   console.log(`App is listening on port ${process.env.PORT}`);

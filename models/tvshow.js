@@ -1,21 +1,21 @@
 module.exports = (sequelize, DataTypes) => {
-  const Movie = sequelize.define("movie", {
+  const TvShow = sequelize.define("tvshow", {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    year: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    director: {
+    // year: {
+    //   type: DataTypes.STRING,
+    //   allowNull: false,
+    // },
+    network: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     watchlist: {
       type: DataTypes.BOOLEAN,
     },
-    runtime: {
+    seasons: {
       type: DataTypes.INTEGER,
     },
     userScore: {
@@ -29,5 +29,5 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     }
   });
-  return Movie;
+  return TvShow;
 };

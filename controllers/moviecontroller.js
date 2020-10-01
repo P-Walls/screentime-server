@@ -7,63 +7,66 @@ const Movie = require("../db").import("../models/movie");
 // POST:  http://localhost:3025/movie/review
 // GET:   http://localhost:3025/movie/
 // GET:   http://localhost:3025/movie/all
-// PUT:   http://localhost:3025/movie/:id
-// DEL:   http://localhost:3025/movie/:id
+// PUT:   http://localhost:3025/movie/review/:id
+// DEL:   http://localhost:3025/movie/review/:id
 
 // -----  Movie Create  -----
-// POST:  http://localhost:3025/media/review
+// POST:  http://localhost:3025/movie/review
 router.post("/review", validateSession, (req, res) => {
   const movie = {
-    
+    title: req.body.title,
+    year: req.body.year,
+    director: req.body.director,
+    watchlist: req.body.watchlist,
+    runtime: req.body.runtime,
+    userScore: req.body.userScore,
+    review: req.body.review,
+    userId: req.user.id,
   };
   Movie.create(movie)
     .then((movie) => res.status(200).json(movie))
     .catch((err) => res.status(500).json({ error: err }));
 });
-// -----Get My Media  -----
-// GET:   http://localhost:3025/media/
+// -----Get My Movies  -----
+// GET:   http://localhost:3025/movie/
 router.get("/", validateSession, (req, res) => {
   let userid = req.user.id;
-  Media.findAll({
+  Movie.findAll({
     where: { userId: userid },
   })
-    .then((media) => res.status(200).json(media))
+    .then((movie) => res.status(200).json(movie))
     .catch((err) => res.status(500).json({ error: err }));
 });
 
-// -----  Get All Media -----
-// GET:   http://localhost:3025/media/all
+// -----  Get All Movies -----
+// GET:   http://localhost:3025/movie/all
 router.get("/all", (req, res) => {
-  Media.findAll()
-    .then((media) => res.status(200).json(media))
+  Movie.findAll()
+    .then((movie) => res.status(200).json(movie))
     .catch((err) => res.status(500).json({ error: err }));
 });
 
-// -----  Update Media  -----
-// PUT:   http://localhost:3025/media/:id
-router.put("/update/:id", validateSession, (req, res) => {
-  const updateMediaEntry = {
-    type: req.body.media.type,
-    title: req.body.media.title,
-    genre: req.body.media.genre,
-    description: req.body.media.description,
-    rating: req.body.media.rating,
-    consumed: req.body.media.consumed,
-    platform: req.body.media.platform,
+// -----  Update Movie  -----
+// PUT:   http://localhost:3025/movie/review/:id
+router.put("/review/:id", validateSession, (req, res) => {
+  const updateMovieScore = {
+    watchlist: req.body.watchlist,
+    userScore: req.body.userScore,
+    review: req.body.review
   };
 
   const query = { where: { id: req.params.id, userId: req.user.id } };      
 
-  Media.update(updateMediaEntry, query)
-    .then((media) => res.status(200).json(media))
+  Movie.update(updateMovieScore, query)
+    .then((movie) => res.status(200).json(movie))
     .catch((err) => res.status(500).json({ error: err }));
 });
 
-// -----  Delete a Media Entry  -----
-// DEL:   http://localhost:3025/media/:id
-router.delete("/:id", (req, res) => {
-  Media.destroy({ where: { id: req.params.id } })
-    .then((media) => res.status(200).json(media))
+// -----  Delete a Movie Review  -----
+// DEL:   http://localhost:3025/movie/review/:id
+router.delete("/review/:id", (req, res) => {
+  Movie.destroy({ where: { id: req.params.id } })
+    .then((movie) => res.status(200).json(movie))
     .catch((err) => res.json(req.errors));
 });
 
