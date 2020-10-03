@@ -14,4 +14,14 @@ sequelize.authenticate().then(
 	}
 );
 
+User = sequelize.import('./models/user');
+Movie = sequelize.import('./models/movie');
+TVShow = sequelize.import('./models/tvshow');
+
+Movie.belongsTo(User);
+TVShow.belongsTo(User);
+
+User.hasMany(Movie);
+User.hasMany(TVShow);
+
 module.exports = sequelize;
