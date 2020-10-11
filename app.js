@@ -12,7 +12,6 @@ app.use(require("./middleware/headers"));
 let user = require("./controllers/usercontroller");
 app.use("/user", user);
 
-//import in movies and tv
 let movie = require("./controllers/moviecontroller");
 app.use("/movie", movie);
 

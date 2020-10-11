@@ -12,9 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // watchlist: {
-    //   type: DataTypes.BOOLEAN,
-    // },
     runtime: {
       type: DataTypes.INTEGER,
     },
