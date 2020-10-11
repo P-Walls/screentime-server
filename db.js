@@ -1,8 +1,6 @@
 const Sequelize = require('sequelize');
-//const sequelize = new Sequelize(process.env.DATABASE_URL, {
-const sequelize = new Sequelize('screentime-reviews','postgres', process.env.PASS, {
-host: 'localhost',
-dialect: 'postgres'
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+dialect: 'postgres',
 });
 
 sequelize.authenticate().then(
@@ -13,5 +11,15 @@ sequelize.authenticate().then(
 		console.log(err);
 	}
 );
+
+User = sequelize.import('./models/user');
+Movie = sequelize.import('./models/movie');
+TVShow = sequelize.import('./models/tvshow');
+
+Movie.belongsTo(User);
+TVShow.belongsTo(User);
+
+User.hasMany(Movie);
+User.hasMany(TVShow);
 
 module.exports = sequelize;

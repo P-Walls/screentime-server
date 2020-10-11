@@ -20,7 +20,7 @@ router.post("/register", (req, res) => {
     email: req.body.email,
     // password: req.body.password
     password: bcrypt.hashSync(req.body.password, 11),
-    role: req.body.role
+    role: req.body.role,
   })
     .then((user) => {
       let token = jwt.sign({ id: user.id }, process.env.SECRETKEY, {
@@ -103,6 +103,18 @@ router.get("/", validateSession, (req, res) => {
   User.findOne({ where: { id: req.user.id } })
     .then((user) => res.status(201).json(user))
     .catch((err) => res.status(500).json({ error: err }));
+});
+
+// // -----  Get All Users  -----
+// // GET :  http://localhost:3025/user/all
+router.get("/all", validateSession, (req, res) => {
+  if (req.user.role === true) {
+    User.findAll()
+      .then((user) => res.status(201).json(user))
+      .catch((err) => res.status(500).json({ error: err }));
+  } else {
+    return res.status(500).send("Not Authorized");
+  }
 });
 
 module.exports = router;
