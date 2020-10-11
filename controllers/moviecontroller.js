@@ -17,7 +17,7 @@ router.post("/review", validateSession, (req, res) => {
     title: req.body.title,
     year: req.body.year,
     director: req.body.director,
-    watchlist: req.body.watchlist,
+    //watchlist: req.body.watchlist,
     runtime: req.body.runtime,
     userScore: req.body.userScore,
     review: req.body.review,
@@ -50,7 +50,7 @@ router.get("/all", (req, res) => {
 // PUT:   http://localhost:3025/movie/review/:id
 router.put("/review/:id", validateSession, (req, res) => {
   const updateMovieScore = {
-    watchlist: req.body.watchlist,
+    //watchlist: req.body.watchlist,
     userScore: req.body.userScore,
     review: req.body.review
   };

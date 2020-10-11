@@ -12,9 +12,9 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    watchlist: {
-      type: DataTypes.BOOLEAN,
-    },
+    // watchlist: {
+    //   type: DataTypes.BOOLEAN,
+    // },
     seasons: {
       type: DataTypes.INTEGER,
     },
