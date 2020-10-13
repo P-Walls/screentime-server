@@ -15,9 +15,7 @@ const TvShow = require("../db").import("../models/tvshow");
 router.post("/review", validateSession, (req, res) => {
   const tvshow = {
     title: req.body.title,
-    //year: req.body.year,
     network: req.body.network,
-    //watchlist: req.body.watchlist,
     seasons: req.body.seasons,
     userScore: req.body.userScore,
     review: req.body.review,
@@ -50,7 +48,6 @@ router.get("/all", (req, res) => {
 // PUT:   http://localhost:3025/tv/review/:id
 router.put("/review/:id", validateSession, (req, res) => {
   const updateTVScore = {
-    //watchlist: req.body.watchlist,
     userScore: req.body.userScore,
     review: req.body.review
   };
@@ -66,6 +63,14 @@ router.put("/review/:id", validateSession, (req, res) => {
 // DEL:   http://localhost:3025/tv/review/:id
 router.delete("/review/:id", (req, res) => {
   TvShow.destroy({ where: { id: req.params.id } })
+    .then((tvshow) => res.status(200).json(tvshow))
+    .catch((err) => res.json(req.errors));
+});
+
+// -----  Admin delete a TV Review  -----
+// DEL:   http://localhost:3025/tv/review/:id
+router.delete("/review/:id", (req, res) => {
+  TvShow.destroy({ where: { role: true } })
     .then((tvshow) => res.status(200).json(tvshow))
     .catch((err) => res.json(req.errors));
 });
