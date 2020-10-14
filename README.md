@@ -52,44 +52,62 @@ URL/user
 
 ## 1. User Register
 
-[User Register](/assets/user-register.png)
+![User Register](/assets/user-register.png)
+
+<br/>
 
 ## 2. User Login
 
-[User Login](/assets/user-login.png)
+![User Login](/assets/user-login.png)
+
+<br/>
 
 URL/movie
 
 ## 1. Post a Movie Review
 
-[Movie POST](/assets/movie-create-review.png)
+![Movie POST](/assets/movie-create-review.png)
+
+<br/>
 
 ## 2. Edit a Movie Review
 
-[Movie PUT](/assets/movie-update-review.png)
+![Movie PUT](/assets/movie-update-review.png)
+
+<br/>
 
 ## 3. Get User's Movie Reviews
 
-[Movie GET](/assets/movie-get-users-reviews.png)
+![Movie GET](/assets/movie-get-users-reviews.png)
+
+<br/>
 
 ## 4. Delete a Movie Review
 
-[Movie DELETE](/assets/movie-delete-review.png)
+![Movie DELETE](/assets/movie-delete-review.png)
+
+<br/>
 
 URL/tv
 
 ## 1. Post a TV Review
 
-[TV POST](/assets/tv-create-review.png)
+![TV POST](/assets/tv-create-review.png)
+
+<br/>
 
 ## 2. Edit a TV Review
 
-[TV PUT](/assets/tv-update-review.png)
+![TV PUT](/assets/tv-update-review.png)
+
+<br/>
 
 ## 3. Get User's TV Reviews
 
-[TV GET](/assets/tv-get-users-reviews.png)
+![TV GET](/assets/tv-get-users-reviews.png)
+
+<br/>
 
 ## 4. Delete a TV Review
 
-[TV DELETE](/assets/tv-delete-review.png)
+![TV DELETE](/assets/tv-delete-review.png)
