@@ -4,17 +4,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // year: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
     network: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // watchlist: {
-    //   type: DataTypes.BOOLEAN,
-    // },
     seasons: {
       type: DataTypes.INTEGER,
     },
